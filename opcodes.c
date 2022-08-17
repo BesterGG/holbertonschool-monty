@@ -61,8 +61,8 @@ void _pint(stack_t **stack, unsigned int line_number)
 {
 	if (!(*stack) || !stack)
 	{
-		fprintf("L%u: can't pint, stack empty\n", line_number);
+		dprintf("L%u: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	printf("%d\n", stack->n);
+	printf("%d\n", (*stack)->n);
 }
