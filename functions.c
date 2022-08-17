@@ -10,13 +10,14 @@ char **split(char *buffer, char *delim)
 	char **list = NULL;
 	char *token = NULL;
 	int i = 0;
-		if (!buffer)
-			return (NULL);
+
+	if (!buffer)
+		return (NULL);
 	list = malloc(1024 * sizeof(char *));
-		if (!list)
-			return (NULL);
+	if (!list)
+		return (NULL);
 	token = strtok(buffer, delim);
-	while(token)
+	while (token)
 	{
 		list[i] = token;
 		token = strtok(NULL, delim);

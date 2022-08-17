@@ -12,6 +12,14 @@
 char **split(char *buffer, char *delim);
 int (*op_func(char *s))(int, int);
 int free_string_list(char **list);
+/** void _push(stack_t **stack, unsigned int line_number);
+void _pall(stack_t **stack, unsigned int line_number);
+void _pint(stack_t **stack, unsigned int line_number);
+void _pop(stack_t **stack, unsigned int line_number);
+void _swap(stack_t **stack, unsigned int line_number);
+void _add(stack_t **stack, unsigned int line_number);
+void _nop(stack_t **stack, unsigned int line_number);
+*/
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer

@@ -2,31 +2,58 @@
 
 void _push(stack_t **stack, unsigned int line_number)
 {
+	stack_t *new = malloc(sizeof(stack_t));
 
-	if ()
-	{
-		dprintf (STDERR_FILENO, "L<%u>: usage: push integer\n", line_number);
+	if (!new)
 		exit(EXIT_FAILURE);
-	}
-	else
-	{
-		
-	}
+	if ()
+
 }
-void *add_dnodeint(stack_t **head, const int n)
+void *add_node(stack_t **stack, int n)
 {
-	stack_t *new_node = NULL;
+	stack_t *new_node = NULL, *aux;
+
 
 	new_node = malloc(sizeof(stack_t));
 	if (!new_node)
 		return (NULL);
-	if (new_node != NULL)
+	if (!stack)
 	{
-		new_node->n = n;
-		new_node->next = *head;
-		new_node->prev = NULL;
-		if (*head != NULL)
-			(*head)->prev = new_node;
-		*head = new_node;
+		new_node->next = NULL;
+		*stack = new_node;
 	}
+	else
+	{
+		aux = *stack;
+		new_node->prev = new_node;
+		new_node->next = aux;
+		*stack = new_node;
+	}
+}
+void _pall(stack_t **stack, unsigned int line_number)
+{
+	stack_t *head;
+	
+	if (*stack)
+	{
+		head = *stack;
+		while (head->next)
+		{
+			printf("%d\n", head->n);
+			head = head->next;
+		}
+		if (head)
+		{
+			printf("%d\n", head->n);
+		}
+	}
+}
+void _pint(stack_t **stack, unsigned int line_number)
+{
+	if (!(*stack) || !stack)
+	{
+		dprintf("L%s: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", stack->n);
 }
