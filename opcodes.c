@@ -1,5 +1,5 @@
 #include "monty.h"
-
+/**
 void _push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new = malloc(sizeof(stack_t));
@@ -7,6 +7,14 @@ void _push(stack_t **stack, unsigned int line_number)
 	if (!new)
 		exit(EXIT_FAILURE);
 	if ()
+	{
+
+	}
+	else
+	{
+		dprintf("L%s: usage: push integer", line_number);
+		exit(EXIT_FAILURE);
+	}
 
 }
 void *add_node(stack_t **stack, int n)
@@ -30,7 +38,8 @@ void *add_node(stack_t **stack, int n)
 		*stack = new_node;
 	}
 }
-void _pall(stack_t **stack, unsigned int line_number)
+*/
+void _pall(stack_t **stack,__attribute__((unused))unsigned int line_number)
 {
 	stack_t *head;
 	
@@ -52,7 +61,7 @@ void _pint(stack_t **stack, unsigned int line_number)
 {
 	if (!(*stack) || !stack)
 	{
-		dprintf("L%s: can't pint, stack empty\n", line_number);
+		fprintf("L%s: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", stack->n);
