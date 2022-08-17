@@ -7,7 +7,7 @@
 */
 int main(int argc, char *argv[])
 {
-	char buffer[1024], *delim = " \t\n", **list;
+	char buffer[1024], *token;
 	FILE *fp;
 
 	(void)argc;
@@ -24,11 +24,8 @@ int main(int argc, char *argv[])
 	}
 	while (fgets(buffer, 1024, fp))
 	{
-		list = split(buffer, delim);
-		/**if (list[1])
-			value =	atoi(list[1]);
-		else
-			value = -1; */
+		token = strtok(buffer," ");
+		if((*op_func(token)
 	}
 	free(list);
 	fclose(fp);
