@@ -1,15 +1,30 @@
 #include "monty.h"
 /**
- * main - shell
- * Return: algo
+ * main - Algo
+ * @argc: Number
+ * @argv: array 
+ * Return: Algo
 */
-int main(void)
+int main(argc, argv[])
 {
 	size_t len = 0;
-	ssize_t getline_status = 1;
-	while (1)
+	char *buffer = 0, *delim = " \t\n", *command = NULL, **args;
+	FILE *fp;
+	buf[1024]
+	len 1023
+	if (argc != 1)
 	{
-	/** Pasan cosas */
+	dprintf (STDERR_FILENO, "USAGE: monty file\n");
+	exit (EXIT_FAILURE);
 	}
-return (0);
+	fp = fopen(argv[1], "r");
+	fgets(buf, len, fp);
+	buf[1024] = '\0';
+	if (fp == NULL)
+	{
+		dprintf (STDERR_FILENO, "Error: Can't open file %s\n", argv[1]);
+		exit (EXIT_FAILURE);
+	}
+		args = split(LO QUE OBTENGO DE FGET, delim);
+		return (sexo);
 }
