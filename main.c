@@ -9,7 +9,6 @@ int main(int argc, char *argv[])
 {
 	char buffer[1024], *delim = " \t\n", **list;
 	FILE *fp;
-	int value = 0;
 
 	(void)argc;
 	if (argc < 1)
@@ -26,10 +25,10 @@ int main(int argc, char *argv[])
 	while (fgets(buffer, 1024, fp))
 	{
 		list = split(buffer, delim);
-		if (list[1])
+		/**if (list[1])
 			value =	atoi(list[1]);
 		else
-			value = -1;
+			value = -1; */
 	}
 	free(list);
 	fclose(fp);
