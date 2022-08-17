@@ -12,10 +12,10 @@ char **split(char *buffer, char *delim)
 	int i = 0;
 		if (!buffer)
 			return (NULL);
-	list = malloc(1024) * sizeof(char *);
+	list = malloc(1024 * sizeof(char *));
 		if (!list)
 			return (NULL);
-	token = strtok(fp, delim);
+	token = strtok(buffer, delim);
 	while(token)
 	{
 		list[i] = token;
@@ -25,7 +25,21 @@ char **split(char *buffer, char *delim)
 	list[i] = NULL;
 	return (list);
 }
-int (*op_func(char *s))(int, int)
+/**
+ * free_string_list - free memory allocated in an array of strings
+ * @list: array of strings
+ * Return: 0 on success, 1 on failure
+ */
+int free_string_list(char **list)
+{
+	int i = 0;
+
+	while (list[i])
+		free(list[i++]);
+	free(list);
+	return (0);
+}
+/**int (*op_func(char *s))(int, int)
 {
 	int j = 0;
 	instruction_t func[] = {
@@ -47,4 +61,4 @@ int (*op_func(char *s))(int, int)
 	j++;
 	}
 	return (NULL);
-}
+}*/
