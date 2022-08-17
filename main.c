@@ -30,7 +30,6 @@ int main(int argc, char *argv[])
 			value =	atoi(list[1]);
 		else
 			value = -1;
-		printf("%s -- Value: %d\n", list[0], value);
 	}
 	free(list);
 	fclose(fp);
