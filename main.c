@@ -5,26 +5,28 @@
  * @argv: array 
  * Return: Algo
 */
-int main(argc, argv[])
+int main(argc, **argv)
 {
-	size_t len = 0;
-	char *buffer = 0, *delim = " \t\n", *command = NULL, **args;
+	size_t len = 0; //PA QUE LO DEFINISTE?
+	char buffer[1024], *delim = " \t\n", **list;
 	FILE *fp;
-	buf[1024]
-	len 1023
+	
 	if (argc != 1)
 	{
-	dprintf (STDERR_FILENO, "USAGE: monty file\n");
-	exit (EXIT_FAILURE);
+	    dprintf (STDERR_FILENO, "USAGE: monty file\n");
+	    exit (EXIT_FAILURE);
 	}
 	fp = fopen(argv[1], "r");
-	fgets(buf, len, fp);
-	buf[1024] = '\0';
 	if (fp == NULL)
 	{
 		dprintf (STDERR_FILENO, "Error: Can't open file %s\n", argv[1]);
 		exit (EXIT_FAILURE);
 	}
-		args = split(LO QUE OBTENGO DE FGET, delim);
-		return (sexo);
+    while(fgets(buffer, 1024, fp))
+    {
+        list = split(buffer, delim);
+        printf("%s%s\n", list[0], list[1]);
+    }
+    fclose(fp);
+	return (0);
 }
