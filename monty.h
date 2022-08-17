@@ -1,5 +1,5 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef MONTY
+#define MONTY
 #include <stdio.h>
 #include <ctype.h>
 #include <stdlib.h>
@@ -8,6 +8,10 @@
 #include <stddef.h>
 #include <stdarg.h>
 #include <unistd.h>
+
+char **split(char *buffer, char *delim);
+int (*op_func(char *s))(int, int);
+int free_string_list(char **list);
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -38,4 +42,4 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-
+#endif
