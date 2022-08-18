@@ -33,28 +33,6 @@ void _push(stack_t **head, unsigned int line_number)
 	}
 	*head = new;
 }
-/**void *add_node(stack_t **stack, int n)
-{
-	stack_t *new_node = NULL, *aux;
-
-
-	new_node = malloc(sizeof(stack_t));
-	if (!new_node)
-		return (NULL);
-	if (!stack)
-	{
-		new_node->next = NULL;
-		*stack = new_node;
-	}
-	else
-	{
-		aux = *stack;
-		new_node->prev = new_node;
-		new_node->next = aux;
-		*stack = new_node;
-	}
-}
-*/
 /**
  * _pall - prints all the values on the stack, starting from the top of the stack.
  * @stack: stack where all our elements will be.
@@ -101,14 +79,17 @@ void _pop(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	if (head->next == NULL)
+	while (head)
 	{
-		*stack = NULL;
-	}
-	else
-	{
-		*stack = head->next;
-		head->next->prev = NULL;
+		if (head && head->next == NULL)
+		{
+			*stack = head;
+		}
+		else
+		{
+			printf("%d\n", head->n);
+			head = head->next;
+		}
 	}
 	free(head);
 }
