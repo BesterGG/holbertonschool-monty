@@ -16,13 +16,13 @@ int main(int argc, char *argv[])
 	(void)argc;
 	if (argc < 1)
 	{
-		dprintf(STDERR_FILENO, "USAGE: monty file\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 	fp = fopen(argv[1], "r");
 	if (fp == NULL)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", argv[1]);
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 	while (fgets(buffer, 1024, fp))
@@ -30,6 +30,7 @@ int main(int argc, char *argv[])
 		op_func(buffer, line, &head);
 		line++;
 	}
+	_pop(&head, line);
 	_pall(&head, line);
 	fclose(fp);
 	return (0);

@@ -20,11 +20,11 @@ void op_func(char *buffer, unsigned int line, stack_t **head)
 	instruction_t func[] = {
 	{"push", _push},
 	{"pall", _pall},
-	/**{"pint", _pint},
+	{"pint", _pint},
 	{"pop", _pop},
 	{"swap", _swap},
 	{"add", _add},
-	{"nop", _nop},*/
+	{"nop", _nop},
 	{NULL, NULL}
 	};
 	token = strtok(buffer, " ");
@@ -37,7 +37,7 @@ void op_func(char *buffer, unsigned int line, stack_t **head)
 			{
 				token2 = strtok(NULL, " ");
 				value = atoi(token2);
-			}	
+			}
 			func[j].f(head, line);
 		}
 	j++;

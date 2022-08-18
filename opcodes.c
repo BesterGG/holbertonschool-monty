@@ -1,5 +1,9 @@
 #include "monty.h"
-
+/**
+ * _push - opcode that pushes an element to the stack.
+ * @stack: stack where all our elements will be.
+ * @line_number: numbers within the stack.
+ */
 void _push(stack_t **head, unsigned int line_number)
 {
 	stack_t *new;
@@ -13,7 +17,7 @@ void _push(stack_t **head, unsigned int line_number)
 	}
 	if (value == -1)
 	{
-		dprintf(STDERR_FILENO, "L%d: usage: push integer", line_number);
+		fprintf(stderr, "L%d: usage: push integer", line_number);
 		exit(EXIT_FAILURE);
 	}
 	new->n = value;
@@ -29,51 +33,42 @@ void _push(stack_t **head, unsigned int line_number)
 	}
 	*head = new;
 }
-/**void *add_node(stack_t **stack, int n)
+/**
+ * _pall - prints all the values on the stack, starting from the top of the stack.
+ * @stack: stack where all our elements will be.
+ * @line_number: numbers within the stack.
+ */
+void _pall(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new_node = NULL, *aux;
+	stack_t *head;
 
-
-	new_node = malloc(sizeof(stack_t));
-	if (!new_node)
-		return (NULL);
-	if (!stack)
-	{
-		new_node->next = NULL;
-		*stack = new_node;
-	}
-	else
-	{
-		aux = *stack;
-		new_node->prev = new_node;
-		new_node->next = aux;
-		*stack = new_node;
-	}
-}
-*/
-void _pall(stack_t **head, unsigned int line_number)
-{
 	(void)line_number;
-	const stack_t *p = *head;
-
-	for (; p; p = p->next)
+	head = *stack;
+	while (head)
 	{
-		if (p)
-		{
-			printf("%d\n", p->n);
-		}
+		printf("%d\n", head->n);
+		head = head->next;
 	}
 }
 /**
+ * _pint - opcode that prints the value at the top of the stack, followed by a new line.
+ * @stack: stack where all our elements will be.
+ * @line_number: numbers within the stack.
+ */
 void _pint(stack_t **stack, unsigned int line_number)
 {
 	if (!(*stack) || !stack)
 	{
-		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty\n", line_number);
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", (*stack)->n);
-}*/
+}
+/**
+ * _pop - opcode that removes the top element of the stack.
+ * @stack: stack where all our elements will be.
+ * @line_number: numbers within the stack.
+ */
 void _pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *head;
@@ -81,17 +76,20 @@ void _pop(stack_t **stack, unsigned int line_number)
 	head = *stack;
 	if (!(*stack) || !stack)
 	{
-		dprintf(STDERR_FILENO, "L%d: can't pop an empty stack\n", line_number);
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	if (head->next == NULL)
+	while (head)
 	{
-		*stack = NULL;
-	}
-	else
-	{
-		*stack = head->next;
-		head->next->prev = NULL;
+		if (head && head->next == NULL)
+		{
+			*stack = head;
+		}
+		else
+		{
+			printf("%d\n", head->n);
+			head = head->next;
+		}
 	}
 	free(head);
 }
