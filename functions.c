@@ -13,7 +13,7 @@ int free_string_list(char **list)
 	free(list);
 	return (0);
 }
-void op_func(char *buffer, unsigned int line, stack_t **head)
+void *op_func(char *buffer, unsigned int line, stack_t **head)
 {
 	int j = 0, value = 0;
 	char *token = NULL, *token2 = NULL;
@@ -35,11 +35,6 @@ void op_func(char *buffer, unsigned int line, stack_t **head)
 			return (func[j].opcode);
 		}
 	j++;
-	}
-	if (!func[i].opcode)
-	{
-		dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n", n, s);
-		exit(EXIT_FAILURE);	
 	}
 	return;
 }
