@@ -81,7 +81,7 @@ void _pop(stack_t **stack, unsigned int line_number)
 	head = *stack;
 	if (!(*stack) || !stack)
 	{
-		dprintf("L%d: can't pop an empty stack\n", line_number);
+		dprintf(STDERR_FILENO, "L%d: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	if (head->next == NULL)
