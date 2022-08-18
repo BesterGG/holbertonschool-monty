@@ -90,7 +90,7 @@ void _pop(stack_t **stack, unsigned int line_number)
 	}
 	else
 	{
-		stack = head->next;
+		*stack = head->next;
 		head->next->prev = NULL;
 	}
 	free(head);
