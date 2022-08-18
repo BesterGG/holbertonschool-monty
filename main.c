@@ -1,4 +1,5 @@
 #include "monty.h"
+value = -1;
 /**
  * main - Algo
  * @argc: Number
@@ -26,8 +27,7 @@ int main(int argc, char *argv[])
 	}
 	while (fgets(buffer, 1024, fp))
 	{
-		token = strtok(buffer," ");
-		op_func(token, line, &head);
+		op_func(buffer, line, &head);
 		line++;
 	}
 	free(list);
