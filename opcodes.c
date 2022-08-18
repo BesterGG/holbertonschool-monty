@@ -7,7 +7,8 @@
 void _push(stack_t **head, unsigned int line_number)
 {
 	stack_t *new;
-	value = strtok(NULL, " ");
+	int value = 0;
+	value = atoi(strtok(NULL, " "));
 	new = malloc(sizeof(stack_t));
 
 	if (!new)
@@ -41,7 +42,6 @@ void _push(stack_t **head, unsigned int line_number)
 void _pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *head;
-	value = strtok(NULL, " ");
 	(void)line_number;
 	head = *stack;
 

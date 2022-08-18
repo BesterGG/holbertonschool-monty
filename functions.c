@@ -13,10 +13,9 @@ int free_string_list(char **list)
 	free(list);
 	return (0);
 }
-int op_func(char *buffer, unsigned int line, stack_t **head)
+void *op_func(char *buffer, unsigned int line)
 {
-	int j = 0, value = 0;
-	char *token = NULL, *token2 = NULL;
+	int j = 0;
 	instruction_t func[] = {
 	{"push", _push},
 	{"pall", _pall},
@@ -30,11 +29,11 @@ int op_func(char *buffer, unsigned int line, stack_t **head)
 
 	while (func[j].opcode != NULL)
 	{
-		if (strcmp(func[j].opcode, token) == 0)
+		if (buffer != NULL && strcmp(func[j].opcode, buffer) == 0)
 		{
 			return (func[j].f);
 		}
 	j++;
 	}
-	return;
+	return(func[j].f);
 }

@@ -12,8 +12,8 @@ int main(int argc, char *argv[])
 	FILE *fp;
 	unsigned int line = 0;
 	stack_t *head = NULL;
-	void *exe_fun = NULL;
-
+	exe_fun f;
+	
 	(void)argc;
 	if (argc < 1)
 	{
@@ -28,10 +28,10 @@ int main(int argc, char *argv[])
 	}
 	while (fgets(buffer, 1024, fp))
 	{
-		token = strtok(buffer, " \t\n");
-		exe_fun = op_func(token, line, &head);
-		if (exe_fun)
-			exe_fun(&head, line);
+		token = strtok(buffer, " ");
+		f = op_func(token, line);
+		if (f)
+			f(&head, line);
 		line++;
 		
 	}
