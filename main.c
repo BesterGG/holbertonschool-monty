@@ -1,5 +1,5 @@
 #include "monty.h"
-int value = -1;
+
 /**
  * main - Algo
  * @argc: Number
@@ -30,8 +30,7 @@ int main(int argc, char *argv[])
 		op_func(buffer, line, &head);
 		line++;
 	}
-	_pop(&head, line);
-	_pall(&head, line);
+	free_string_list(head);
 	fclose(fp);
 	return (0);
 }

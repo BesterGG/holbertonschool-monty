@@ -15,7 +15,7 @@ int free_string_list(char **list)
 }
 void op_func(char *buffer, unsigned int line, stack_t **head)
 {
-	int j = 0;
+	int j = 0, value = 0;
 	char *token = NULL, *token2 = NULL;
 	instruction_t func[] = {
 	{"push", _push},
