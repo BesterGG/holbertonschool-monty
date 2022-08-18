@@ -1,5 +1,6 @@
 push 1
 push     2
-pall
-pop
-pall
+push 3
+push 5
+push 9
+swap

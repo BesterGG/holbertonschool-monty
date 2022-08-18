@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 		op_func(buffer, line, &head);
 		line++;
 	}
-	_pall(&head, line);
+	_swap(&head, line);
 	fclose(fp);
 	return (0);
 }
