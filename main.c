@@ -8,10 +8,11 @@
 */
 int main(int argc, char *argv[])
 {
-	char buffer[1024];
+	char buffer[1024], *token = NULL;
 	FILE *fp;
 	unsigned int line = 0;
 	stack_t *head = NULL;
+	void *exe_fun = NULL;
 
 	(void)argc;
 	if (argc < 1)
@@ -27,10 +28,14 @@ int main(int argc, char *argv[])
 	}
 	while (fgets(buffer, 1024, fp))
 	{
-		op_func(buffer, line, &head);
+		token = strtok(buffer, " \t\n");
+		exe_fun = op_func(token, line, &head);
+		if (exe_fun)
+			exe_fun(&head, line);
 		line++;
+		
 	}
-	free_string_list(head);
+	free_string_list(*head);
 	fclose(fp);
 	return (0);
 }

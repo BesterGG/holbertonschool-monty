@@ -27,20 +27,19 @@ void op_func(char *buffer, unsigned int line, stack_t **head)
 	{"nop", _nop},
 	{NULL, NULL}
 	};
-	token = strtok(buffer, " ");
 
 	while (func[j].opcode != NULL)
 	{
 		if (strcmp(func[j].opcode, token) == 0)
 		{
-			if (strcmp(func[j].opcode, "push") == 0)
-			{
-				token2 = strtok(NULL, " ");
-				value = atoi(token2);
-			}
-			func[j].f(head, line);
+			return (func[j].opcode);
 		}
 	j++;
+	}
+	if (!func[i].opcode)
+	{
+		dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n", n, s);
+		exit(EXIT_FAILURE);	
 	}
 	return;
 }

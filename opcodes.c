@@ -7,7 +7,7 @@
 void _push(stack_t **head, unsigned int line_number)
 {
 	stack_t *new;
-
+	value = strtok(NULL, " ");
 	new = malloc(sizeof(stack_t));
 
 	if (!new)
@@ -15,7 +15,7 @@ void _push(stack_t **head, unsigned int line_number)
 		/**dprintf(STDERROR, algo)*/
 		exit(EXIT_FAILURE);
 	}
-	if (value == -1)
+	if (!value)
 	{
 		fprintf(stderr, "L%d: usage: push integer", line_number);
 		exit(EXIT_FAILURE);
@@ -41,9 +41,10 @@ void _push(stack_t **head, unsigned int line_number)
 void _pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *head;
-
+	value = strtok(NULL, " ");
 	(void)line_number;
 	head = *stack;
+
 	while (head)
 	{
 		printf("%d\n", head->n);
