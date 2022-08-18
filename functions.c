@@ -33,7 +33,7 @@ void op_func(char *buffer, unsigned int line, stack_t **head)
 	{
 		if (strcmp(func[j].opcode, token) == 0)
 		{
-			if (j == 0)
+			if (strcmp(func[j].opcode, "push") == 0)
 			{
 				token2 = strtok(NULL, " ");
 				value = atoi(token2);

@@ -16,6 +16,7 @@ void _push(stack_t **head, unsigned int line_number)
 		dprintf(STDERR_FILENO, "L%d: usage: push integer", line_number);
 		exit(EXIT_FAILURE);
 	}
+	new->n = value;
 	new->prev = NULL;
 	if (*head)
 	{
@@ -50,8 +51,9 @@ void _push(stack_t **head, unsigned int line_number)
 	}
 }
 */
-void _pall(stack_t **head,__attribute__((unused))unsigned int line_number)
+void _pall(stack_t **head, unsigned int line_number)
 {
+	(void)line_number;
 	const stack_t *p = *head;
 
 	for (; p; p = p->next)
