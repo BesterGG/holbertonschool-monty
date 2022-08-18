@@ -9,8 +9,9 @@
 #include <stdarg.h>
 #include <unistd.h>
 
+extern int value;
 char **split(char *buffer, char *delim);
-int (*op_func(char *s))(int, int);
+int *op_func(char *s, unsigned int line, stack_t **head);
 int free_string_list(char **list);
 /** void _push(stack_t **stack, unsigned int line_number);
 void _pall(stack_t **stack, unsigned int line_number);

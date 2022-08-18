@@ -1,21 +1,33 @@
 #include "monty.h"
-/**
+
 void _push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new = malloc(sizeof(stack_t));
+	stack_t *new;
+
+	new = malloc(sizeof(stack_t));
 
 	if (!new)
-		exit(EXIT_FAILURE);
-	if ()
 	{
-
+		/**dprintf(STDERROR, algo)*/
+		exit(EXIT_FAILURE);
 	}
-	else
+	if (value == -1)
 	{
 		dprintf("L%s: usage: push integer", line_number);
 		exit(EXIT_FAILURE);
 	}
-
+	p->n = n;
+	p->prev = NULL;
+	if (*head)
+	{
+		(*head)->prev = p;
+		p->next = *head;
+	}	
+	else
+	{
+		p->next = NULL;
+	}
+	*head = p;
 }
 void *add_node(stack_t **stack, int n)
 {
@@ -38,7 +50,7 @@ void *add_node(stack_t **stack, int n)
 		*stack = new_node;
 	}
 }
-*/
+
 void _pall(stack_t **stack,__attribute__((unused))unsigned int line_number)
 {
 	stack_t *head;

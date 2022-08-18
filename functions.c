@@ -4,7 +4,7 @@
  * @buffer: string value to delimit
  * @delim: string with chars which ar delimiters
  * Return: array of string
- */
+
 char **split(char *buffer, char *delim)
 {
 	char **list = NULL;
@@ -25,7 +25,8 @@ char **split(char *buffer, char *delim)
 	}
 	list[i] = NULL;
 	return (list);
-}
+} */
+
 /**
  * free_string_list - free memory allocated in an array of strings
  * @list: array of strings
@@ -40,7 +41,7 @@ int free_string_list(char **list)
 	free(list);
 	return (0);
 }
-/**int (*op_func(char *s))(int, int)
+void (*op_func(char *s, unsigned int line, stack_t **head))
 {
 	int j = 0;
 	instruction_t func[] = {
@@ -57,9 +58,9 @@ int free_string_list(char **list)
 	{
 		if (*(f[j].opcode) == s[0])
 		{
-			return (func[j].f);
+			func[j].f()
 		}
 	j++;
 	}
 	return (NULL);
-}*/
+}

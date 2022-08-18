@@ -9,6 +9,8 @@ int main(int argc, char *argv[])
 {
 	char buffer[1024], *token;
 	FILE *fp;
+	unsigned int line = 0;
+	stack_t *head = NULL;
 
 	(void)argc;
 	if (argc < 1)
@@ -25,7 +27,8 @@ int main(int argc, char *argv[])
 	while (fgets(buffer, 1024, fp))
 	{
 		token = strtok(buffer," ");
-		if((*op_func(token)
+		op_func(token, line, &head);
+		line++;
 	}
 	free(list);
 	fclose(fp);
