@@ -40,7 +40,7 @@ typedef struct instruction_s
 } instruction_t;
 
 char **split(char *buffer, char *delim);
-void *op_func(char *buffer, unsigned int line, stack_t **head);
+int op_func(char *buffer, unsigned int line, stack_t **head);
 int free_string_list(char **list);
 void _push(stack_t **stack, unsigned int line_number);
 void _pall(stack_t **stack, unsigned int line_number);

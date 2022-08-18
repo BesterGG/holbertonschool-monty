@@ -13,7 +13,7 @@ int free_string_list(char **list)
 	free(list);
 	return (0);
 }
-void *op_func(char *buffer, unsigned int line, stack_t **head)
+int op_func(char *buffer, unsigned int line, stack_t **head)
 {
 	int j = 0, value = 0;
 	char *token = NULL, *token2 = NULL;
@@ -32,7 +32,7 @@ void *op_func(char *buffer, unsigned int line, stack_t **head)
 	{
 		if (strcmp(func[j].opcode, token) == 0)
 		{
-			return (func[j].opcode);
+			return (func[j].f);
 		}
 	j++;
 	}
