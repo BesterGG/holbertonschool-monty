@@ -1,7 +1,8 @@
 #include "monty.h"
 void _swap(stack_t **stack, unsigned int line_number)
 {
-	stack_t *head, *new_node;
+	stack_t *head;
+	int new_node = 0;
 
 	head = *stack;
 	if (head == NULL || head->next == NULL)
@@ -15,8 +16,8 @@ void _swap(stack_t **stack, unsigned int line_number)
 }
 void _add(stack_t **stack, unsigned int line_number)
 {
-	stack_t *head = *stack, *new_stack;
-
+	stack_t *head = *stack;
+	int new_stack = 0;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
