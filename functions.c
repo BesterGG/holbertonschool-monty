@@ -1,33 +1,5 @@
 #include "monty.h"
 /**
- * split - create an array of strings from a string separated by chars
- * @buffer: string value to delimit
- * @delim: string with chars which ar delimiters
- * Return: array of string
-
-char **split(char *buffer, char *delim)
-{
-	char **list = NULL;
-	char *token = NULL;
-	int i = 0;
-
-	if (!buffer)
-		return (NULL);
-	list = malloc(1024 * sizeof(char *));
-	if (!list)
-		return (NULL);
-	token = strtok(buffer, delim);
-	while (token)
-	{
-		list[i] = token;
-		token = strtok(NULL, delim);
-		i++;
-	}
-	list[i] = NULL;
-	return (list);
-} */
-
-/**
  * free_string_list - free memory allocated in an array of strings
  * @list: array of strings
  * Return: 0 on success, 1 on failure
@@ -48,11 +20,11 @@ void op_func(char *buffer, unsigned int line, stack_t **head)
 	instruction_t func[] = {
 	{"push", _push},
 	{"pall", _pall},
-	{"pint", _pint},
+	/**{"pint", _pint},
 	{"pop", _pop},
 	{"swap", _swap},
 	{"add", _add},
-	{"nop", _nop},
+	{"nop", _nop},*/
 	{NULL, NULL}
 	};
 	token = strtok(buffer, " ");
@@ -70,5 +42,5 @@ void op_func(char *buffer, unsigned int line, stack_t **head)
 		}
 	j++;
 	}
-	return (NULL);
+	return;
 }

@@ -1,6 +1,6 @@
 #include "monty.h"
 
-void _push(stack_t **stack, unsigned int line_number)
+void _push(stack_t **head, unsigned int line_number)
 {
 	stack_t *new;
 
@@ -13,23 +13,22 @@ void _push(stack_t **stack, unsigned int line_number)
 	}
 	if (value == -1)
 	{
-		dprintf("L%s: usage: push integer", line_number);
+		dprintf(STDERR_FILENO, "L%d: usage: push integer", line_number);
 		exit(EXIT_FAILURE);
 	}
-	p->n = n;
-	p->prev = NULL;
+	new->prev = NULL;
 	if (*head)
 	{
-		(*head)->prev = p;
-		p->next = *head;
+		(*head)->prev = new;
+		new->next = *head;
 	}	
 	else
 	{
-		p->next = NULL;
+		new->next = NULL;
 	}
-	*head = p;
+	*head = new;
 }
-void *add_node(stack_t **stack, int n)
+/**void *add_node(stack_t **stack, int n)
 {
 	stack_t *new_node = NULL, *aux;
 
@@ -50,25 +49,20 @@ void *add_node(stack_t **stack, int n)
 		*stack = new_node;
 	}
 }
-
-void _pall(stack_t **stack,__attribute__((unused))unsigned int line_number)
+*/
+void _pall(stack_t **head,__attribute__((unused))unsigned int line_number)
 {
-	stack_t *head;
-	
-	if (*stack)
+	const stack_t *p = *head;
+
+	for (; p; p = p->next)
 	{
-		head = *stack;
-		while (head->next)
+		if (p)
 		{
-			printf("%d\n", head->n);
-			head = head->next;
-		}
-		if (head)
-		{
-			printf("%d\n", head->n);
+			printf("%d\n", p->n);
 		}
 	}
 }
+/**
 void _pint(stack_t **stack, unsigned int line_number)
 {
 	if (!(*stack) || !stack)
@@ -77,4 +71,4 @@ void _pint(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", (*stack)->n);
-}
+}*/
