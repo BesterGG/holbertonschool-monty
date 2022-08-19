@@ -13,10 +13,9 @@ int free_string_list(char **list)
 	free(list);
 	return (0);
 }
-void op_func(char *buffer, unsigned int line, stack_t **head)
+instruction_t op_func(char *buffer)
 {
 	int j = 0;
-	char *token = NULL, *token2 = NULL;
 	instruction_t func[] = {
 	{"push", _push},
 	{"pall", _pall},
@@ -27,20 +26,14 @@ void op_func(char *buffer, unsigned int line, stack_t **head)
 	{"nop", _nop},
 	{NULL, NULL}
 	};
-	token = strtok(buffer, " ");
 
 	while (func[j].opcode != NULL)
 	{
-		if (strcmp(func[j].opcode, token) == 0)
+		if (strcmp(func[j].opcode, buffer) == 0)
 		{
-			if (strcmp(func[j].opcode, "push") == 0)
-			{
-				token2 = strtok(NULL, " ");
-				value = atoi(token2);
-			}
-			func[j].f(head, line);
+			return (func[j]);
 		}
 	j++;
 	}
-	return;
+	return (func[j]);
 }

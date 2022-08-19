@@ -8,8 +8,10 @@ int value = -1;
 */
 int main(int argc, char *argv[])
 {
-	char buffer[1024];
+	char buffer[1024], *token = NULL;
 	FILE *fp;
+	int j = 1;
+	instruction_t funcs;
 	unsigned int line = 0;
 	stack_t *head = NULL;
 
@@ -27,11 +29,18 @@ int main(int argc, char *argv[])
 	}
 	while (fgets(buffer, 1024, fp))
 	{
-		op_func(buffer, line, &head);
+		token = strtok(buffer, " \n\t $");
+		if (!token)
+			continue;
+		funcs = op_func(token);
+		if (!funcs.f)
+		{
+			fprintf(stderr, "L%d: unknown instruction %s", j, token);
+			exit(EXIT_FAILURE);
+		}
+		(*(funcs.f))(&head, j);
 		line++;
 	}
-	_pop(&head, line);
-	_pall(&head, line);
 	fclose(fp);
 	return (0);
 }

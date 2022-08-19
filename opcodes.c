@@ -74,22 +74,12 @@ void _pop(stack_t **stack, unsigned int line_number)
 	stack_t *head;
 
 	head = *stack;
-	if (!(*stack) || !stack)
+	if (!head)
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	while (head)
-	{
-		if (head && head->next == NULL)
-		{
-			*stack = head;
-		}
-		else
-		{
-			printf("%d\n", head->n);
-			head = head->next;
-		}
-	}
+	*stack = (*stack)->next;
+	(*stack)->prev = NULL;
 	free(head);
 }

@@ -42,8 +42,9 @@ typedef struct instruction_s
 } instruction_t;
 
 char **split(char *buffer, char *delim);
-void op_func(char *buffer, unsigned int line, stack_t **head);
 int free_string_list(char **list);
+instruction_t op_func(char *buffer);
+typedef void (* exe_fun) (stack_t **, unsigned int);
 void _push(stack_t **stack, unsigned int line_number);
 void _pall(stack_t **stack, unsigned int line_number);
 void _pint(stack_t **stack, unsigned int line_number);
