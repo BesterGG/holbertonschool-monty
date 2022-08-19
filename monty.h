@@ -9,7 +9,7 @@
 #include <stdarg.h>
 #include <unistd.h>
 
-extern int value;
+extern char *value;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -41,10 +41,8 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-char **split(char *buffer, char *delim);
+void (*op_func(char *buff))(stack_t **stack, unsigned int line_number);
 int free_string_list(char **list);
-instruction_t op_func(char *buffer);
-typedef void (* exe_fun) (stack_t **, unsigned int);
 void _push(stack_t **stack, unsigned int line_number);
 void _pall(stack_t **stack, unsigned int line_number);
 void _pint(stack_t **stack, unsigned int line_number);

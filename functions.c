@@ -13,7 +13,7 @@ int free_string_list(char **list)
 	free(list);
 	return (0);
 }
-instruction_t op_func(char *buffer)
+void (*op_func(char *buff))(stack_t **stack, unsigned int line_number)
 {
 	int j = 0;
 	instruction_t func[] = {
@@ -27,13 +27,11 @@ instruction_t op_func(char *buffer)
 	{NULL, NULL}
 	};
 
-	while (func[j].opcode != NULL)
+	while (func[j].opcode)
 	{
-		if (strcmp(func[j].opcode, buffer) == 0)
-		{
-			return (func[j]);
-		}
-	j++;
+		if (strcmp(func[j].opcode, buff) == 0)
+			return (func[j].f);
+		j++;
 	}
-	return (func[j]);
+	return (NULL);
 }

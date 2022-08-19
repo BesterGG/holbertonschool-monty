@@ -7,18 +7,18 @@
 void _swap(stack_t **stack, unsigned int line_number)
 {
 	stack_t *head = *stack;
-	int a = 0, value;
+	int a = 0, val;
 
 	while (head->next)
 		a++;
-	if (head == NULL || head->next == NULL)
+	if (a < 2)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	value = (*stack)->n;
+	val = (*stack)->n;
 	(*stack)->n = (*stack)->next->n;
-	(*stack)->next->n = value;
+	(*stack)->next->n = val;
 }
 /**
  * _add - opcode that adds the first two elements of the stack.
@@ -28,11 +28,11 @@ void _swap(stack_t **stack, unsigned int line_number)
 void _add(stack_t **stack, unsigned int line_number)
 {
 	stack_t *head = *stack;
-	int ad = 0, sum = 0;
+	int a = 0, sum = 0;
 
 	while (head->next)
-		ad++;
-	if (*stack == NULL || (*stack)->next == NULL)
+		a++;
+	if (a < 2)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
