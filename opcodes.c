@@ -4,34 +4,37 @@
  * @stack: stack where all our elements will be.
  * @line_number: numbers within the stack.
  */
-void _push(stack_t **head, unsigned int line_number)
+void _push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new;
+	stack_t *new = NULL;
+	char *str = NULL;
 
 	new = malloc(sizeof(stack_t));
-
+	str = strtok(NULL, "\t\n ");
+	if (!str)
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	new = malloc(sizeof(stack_t));
 	if (!new)
 	{
-		/**dprintf(STDERROR, algo)*/
+		fprintf(stderr, "Error: malloc failed");
 		exit(EXIT_FAILURE);
 	}
-	if (value == -1)
-	{
-		fprintf(stderr, "L%d: usage: push integer", line_number);
-		exit(EXIT_FAILURE);
-	}
-	new->n = value;
+	new->n = atoi(str);
 	new->prev = NULL;
-	if (*head)
+	if (*stack)
 	{
-		(*head)->prev = new;
-		new->next = *head;
+		new->next = *stack;
+		(*stack)->prev = new;
+		*stack = new;
 	}	
 	else
 	{
 		new->next = NULL;
+		*stack = new;
 	}
-	*head = new;
 }
 /**
  * _pall - prints all the values on the stack, starting from the top of the stack.
@@ -40,10 +43,9 @@ void _push(stack_t **head, unsigned int line_number)
  */
 void _pall(stack_t **stack, unsigned int line_number)
 {
-	stack_t *head;
+	stack_t *head = *stack;
 
 	(void)line_number;
-	head = *stack;
 	while (head)
 	{
 		printf("%d\n", head->n);
@@ -57,12 +59,14 @@ void _pall(stack_t **stack, unsigned int line_number)
  */
 void _pint(stack_t **stack, unsigned int line_number)
 {
-	if (!(*stack) || !stack)
+	stack_t *head = *stack;
+
+	if (!stack)
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	printf("%d\n", (*stack)->n);
+	printf("%d\n", head->n);
 }
 /**
  * _pop - opcode that removes the top element of the stack.
@@ -71,15 +75,15 @@ void _pint(stack_t **stack, unsigned int line_number)
  */
 void _pop(stack_t **stack, unsigned int line_number)
 {
-	stack_t *head;
+	stack_t *head = *stack;
 
-	head = *stack;
 	if (!head)
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	*stack = (*stack)->next;
-	(*stack)->prev = NULL;
+	*stack = head->next;
+	if (head->next)
+		head->next->prev = NULL;
 	free(head);
 }

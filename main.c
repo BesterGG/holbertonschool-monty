@@ -10,12 +10,11 @@ int main(int argc, char *argv[])
 {
 	char buffer[1024], *token = NULL;
 	FILE *fp;
-	int j = 1;
+	int j = 0;
 	instruction_t funcs;
 	unsigned int line = 0;
 	stack_t *head = NULL;
 
-	(void)argc;
 	if (argc < 1)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
@@ -29,6 +28,7 @@ int main(int argc, char *argv[])
 	}
 	while (fgets(buffer, 1024, fp))
 	{
+		j++;
 		token = strtok(buffer, " \n\t $");
 		if (!token)
 			continue;
