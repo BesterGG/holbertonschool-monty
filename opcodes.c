@@ -4,18 +4,15 @@
  * @stack: stack where all our elements will be.
  * @line_number: numbers within the stack.
  */
-<<<<<<< HEAD
 void _push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new = NULL;
 	char *str = NULL;
-=======
 void _push(stack_t **head, unsigned int line_number)
 {
 	stack_t *new;
 	value = strtok(NULL, " ");
 	new = malloc(sizeof(stack_t));
->>>>>>> main
 
 	str = strtok(NULL, "\t\n ");
 	if (!str)
@@ -23,16 +20,13 @@ void _push(stack_t **head, unsigned int line_number)
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-<<<<<<< HEAD
 	new = malloc(sizeof(stack_t));
 	if (!new)
 	{
 		fprintf(stderr, "Error: malloc failed");
-=======
 	if (!value)
 	{
 		fprintf(stderr, "L%d: usage: push integer", line_number);
->>>>>>> main
 		exit(EXIT_FAILURE);
 	}
 	new->n = atoi(str);
