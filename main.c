@@ -1,5 +1,9 @@
 #include "monty.h"
+<<<<<<< HEAD
 char *gg = NULL;
+=======
+
+>>>>>>> main
 /**
  * main - main function
  * @argc: int
@@ -14,6 +18,7 @@ int main(int argc, char *argv[])
 	int line_number = 0;
 	void (*opcode_func)(stack_t **stack, unsigned int line_number);
 	stack_t *head = NULL;
+	void *exe_fun = NULL;
 
 	if (argc != 2)
 	{
@@ -28,6 +33,7 @@ int main(int argc, char *argv[])
 	}
 	while (fgets(buffer, 1024, fp))
 	{
+<<<<<<< HEAD
 		j++;
 		token = strtok(buffer, "\n\t $");
 		if (!token)
@@ -41,6 +47,16 @@ int main(int argc, char *argv[])
 		}
 		opcode_func(&head, line_number);
 	}
+=======
+		token = strtok(buffer, " \t\n");
+		exe_fun = op_func(token, line, &head);
+		if (exe_fun)
+			exe_fun(&head, line);
+		line++;
+		
+	}
+	free_string_list(*head);
+>>>>>>> main
 	fclose(fp);
 	return (0);
 }

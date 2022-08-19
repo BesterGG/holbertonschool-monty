@@ -4,10 +4,18 @@
  * @stack: stack where all our elements will be.
  * @line_number: numbers within the stack.
  */
+<<<<<<< HEAD
 void _push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new = NULL;
 	char *str = NULL;
+=======
+void _push(stack_t **head, unsigned int line_number)
+{
+	stack_t *new;
+	value = strtok(NULL, " ");
+	new = malloc(sizeof(stack_t));
+>>>>>>> main
 
 	str = strtok(NULL, "\t\n ");
 	if (!str)
@@ -15,10 +23,16 @@ void _push(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
+<<<<<<< HEAD
 	new = malloc(sizeof(stack_t));
 	if (!new)
 	{
 		fprintf(stderr, "Error: malloc failed");
+=======
+	if (!value)
+	{
+		fprintf(stderr, "L%d: usage: push integer", line_number);
+>>>>>>> main
 		exit(EXIT_FAILURE);
 	}
 	new->n = atoi(str);
@@ -42,11 +56,19 @@ void _push(stack_t **stack, unsigned int line_number)
  */
 void _pall(stack_t **stack, unsigned int line_number)
 {
+<<<<<<< HEAD
 	stack_t *head = *stack;
 
 	(void)line_number;
 	if (!head)
 		return;
+=======
+	stack_t *head;
+	value = strtok(NULL, " ");
+	(void)line_number;
+	head = *stack;
+
+>>>>>>> main
 	while (head)
 	{
 		printf("%d\n", head->n);
@@ -67,7 +89,11 @@ void _pint(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
+<<<<<<< HEAD
 	printf("%d\n", head->n);
+=======
+	printf("%d\n", (*stack)->n);
+>>>>>>> main
 }
 /**
  * _pop - opcode that removes the top element of the stack.
@@ -83,8 +109,23 @@ void _pop(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
+<<<<<<< HEAD
 	*stack = head->next;
 	if (head->next)
 		head->next->prev = NULL;
+=======
+	while (head)
+	{
+		if (head && head->next == NULL)
+		{
+			*stack = head;
+		}
+		else
+		{
+			printf("%d\n", head->n);
+			head = head->next;
+		}
+	}
+>>>>>>> main
 	free(head);
 }
