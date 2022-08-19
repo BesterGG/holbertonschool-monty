@@ -51,3 +51,22 @@ void _nop(stack_t **stack, unsigned int line_number)
 {
 	(void) stack, (void) line_number;
 }
+/**
+ * _pop - opcode that removes the top element of the stack.
+ * @stack: stack where all our elements will be.
+ * @line_number: numbers within the stack.
+ */
+void _pop(stack_t **stack, unsigned int line_number)
+{
+	stack_t *head = *stack;
+
+	if (!head)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	*stack = head->next;
+	if (head->next)
+		head->next->prev = NULL;
+	free(head);
+}

@@ -13,6 +13,12 @@ int free_string_list(char **list)
 	free(list);
 	return (0);
 }
+/**
+ * op_func - Function
+ * @buff: array
+ * @stack: stack
+ * @line_number: number
+ */
 void (*op_func(char *buff))(stack_t **stack, unsigned int line_number)
 {
 	int j = 0;

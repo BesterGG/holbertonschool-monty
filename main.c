@@ -10,7 +10,6 @@ int main(int argc, char *argv[])
 {
 	char buffer[1024], *token = NULL;
 	FILE *fp;
-	int j = 0;
 	int line_number = 0;
 	void (*opcode_func)(stack_t **stack, unsigned int line_number);
 	stack_t *head = NULL;
@@ -28,7 +27,7 @@ int main(int argc, char *argv[])
 	}
 	while (fgets(buffer, 1024, fp))
 	{
-		j++;
+		line_number++;
 		token = strtok(buffer, "\n\t $");
 		if (!token)
 			continue;
