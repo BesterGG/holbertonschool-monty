@@ -36,7 +36,7 @@ void _push(stack_t **stack, unsigned int line_number)
 	}
 }
 /**
- * _pall - prints all the values on the stack, starting from the top of the stack.
+ * _pall - prints all the values , starting from the top of the stack.
  * @stack: stack where all our elements will be.
  * @line_number: numbers within the stack.
  */
@@ -54,7 +54,7 @@ void _pall(stack_t **stack, unsigned int line_number)
 	}
 }
 /**
- * _pint - opcode that prints the value at the top of the stack, followed by a new line.
+ * _pint - prints the value at the top of the stack, followed by a new line.
  * @stack: stack where all our elements will be.
  * @line_number: numbers within the stack.
  */

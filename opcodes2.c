@@ -9,7 +9,7 @@ void _swap(stack_t **stack, unsigned int line_number)
 	stack_t *head = *stack;
 	int a = 0, val;
 
-	while (head->next)
+	for (; head; head = head->next)
 		a++;
 	if (a < 2)
 	{
@@ -30,8 +30,9 @@ void _add(stack_t **stack, unsigned int line_number)
 	stack_t *head = *stack;
 	int a = 0, sum = 0;
 
-	while (head->next)
+	for (; head; head = head->next)
 		a++;
+	head = *stack;
 	if (a < 2)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);

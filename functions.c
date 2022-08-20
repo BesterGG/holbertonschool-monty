@@ -16,8 +16,7 @@ int free_string_list(char **list)
 /**
  * op_func - Function
  * @buff: array
- * @stack: stack
- * @line_number: number
+ * Return: void.
  */
 void (*op_func(char *buff))(stack_t **stack, unsigned int line_number)
 {

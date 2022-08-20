@@ -1,5 +1,5 @@
 #include "monty.h"
-char *gg = NULL;
+char *value = NULL;
 /**
  * main - main function
  * @argc: int
