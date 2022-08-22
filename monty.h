@@ -41,6 +41,7 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+void freedom(char *buffer, stack_t **stack);
 void (*op_func(char *buff))(stack_t **stack, unsigned int line_number);
 char **split(char *buffer, char *delim);
 int free_string_list(char **list);
