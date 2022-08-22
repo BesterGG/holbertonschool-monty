@@ -1,17 +1,23 @@
 #include "monty.h"
 /**
- * free_string_list - free memory allocated in an array of strings
- * @list: array of strings
- * Return: 0 on success, 1 on failure
+ * freedom - free everything
+ * @buf: string of chars (buffer of getline)
+ * @pila: stack
+ *
+ * Return: void
  */
-int free_string_list(char **list)
+void freedom(char *buf, stack_t **pila)
 {
-	int i = 0;
+	stack_t *aux = *pila;
 
-	while (list[i])
-		free(list[i++]);
-	free(list);
-	return (0);
+	if (buf)
+		free(buf);
+	while (*pila)
+	{
+		aux = *pila;
+		*pila = (*pila)->next;
+		free(aux);
+	}
 }
 /**
  * op_func - Function

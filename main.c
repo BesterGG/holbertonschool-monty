@@ -41,5 +41,6 @@ int main(int argc, char *argv[])
 		opcode_func(&head, line_number);
 	}
 	fclose(fp);
+	freedom(buffer, &head);
 	return (0);
 }
