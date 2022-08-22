@@ -1,6 +1,21 @@
 #include "monty.h"
 char *value = NULL;
 /**
+ * free_list - free the list
+ * @head: pointer to a stack_t
+ */
+void free_list(stack_t *head)
+{
+	stack_t *tmp;
+
+	while (head)
+	{
+		tmp = head->next;
+		free(head);
+		head = tmp;
+	}
+}
+/**
  * main - main function
  * @argc: int
  * @argv: array
@@ -40,7 +55,7 @@ int main(int argc, char *argv[])
 		}
 		opcode_func(&head, line_number);
 	}
+	free_list(head);
 	fclose(fp);
-	freedom(buffer, &head);
 	return (0);
 }

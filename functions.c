@@ -1,25 +1,5 @@
 #include "monty.h"
 /**
- * freedom - free everything
- * @buf: string of chars (buffer of getline)
- * @pila: stack
- *
- * Return: void
- */
-void freedom(char *buf, stack_t **pila)
-{
-	stack_t *aux = *pila;
-
-	if (buf)
-		free(buf);
-	while (*pila)
-	{
-		aux = *pila;
-		*pila = (*pila)->next;
-		free(aux);
-	}
-}
-/**
  * op_func - Function
  * @buff: array
  * Return: void.
